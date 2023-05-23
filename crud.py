@@ -4,7 +4,7 @@ from firebase_admin import credentials
 from firebase_admin import db
 import time
 
-cred = credentials.Certificate(r"C:\Users\mahir\Desktop\ai_end\mini_project\serviceAccount.json")
+cred = credentials.Certificate(r"serviceAccount.json")
 
 # Initialize the Firebase app
 # firebase_admin.initialize_app(cred, {
