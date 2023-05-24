@@ -36,7 +36,7 @@ with col3:
 
 option = st.selectbox(
     'What task you want to perfrom?',
-    ('Add Dustbin', 'Remove Dustbin', 'View Details'))
+    ('Add Dustbin', 'Remove Dustbin', 'View Details','View Complaints'))
 
 if option=='Add Dustbin':
     st.header("fill the details to add:")
@@ -67,6 +67,31 @@ elif option=='View Details':
     data=ref.child('information').get()
     st.write(data)
     
-
+elif option=='View Complaints':
+    st.header("Server data:-")
+    data=ref.child('complaints').child('complaints').get()
+    st.header("Areas")
+    area=[]
+    for k,v in data.items():
+        area.append(k)
+        # for k2,v2 in v.items():
+        #     print(k2)
+        
+    area=st.selectbox('Select Area to get details:',area)
+    complaints=data=ref.child('complaints').child('complaints').child(area).get()
+    # st.write(complaints)# 
+    cnt=1
+    for i,(c,v) in enumerate(complaints.items()):
+        st.header(f'complaint no {i+1}:')
+        for i,(c1,v1) in enumerate(v.items()): # for i, (k, v) in enumerate(mydict.items()):
+            # st.write(v1)
+            # s=str(i)+" complaint"
+            # st.header(f"complaint no {cnt}:- ")
+            st.write(c1,':',v1)
+            
+        
+    
+    
+    
 
 
