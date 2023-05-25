@@ -81,17 +81,44 @@ elif option=='View Complaints':
     complaints=data=ref.child('complaints').child('complaints').child(area).get()
     # st.write(complaints)# 
     cnt=1
-    for i,(c,v) in enumerate(complaints.items()):
-        st.header(f'complaint no {i+1}:')
-        for i,(c1,v1) in enumerate(v.items()): # for i, (k, v) in enumerate(mydict.items()):
-            # st.write(v1)
-            # s=str(i)+" complaint"
-            # st.header(f"complaint no {cnt}:- ")
-            st.write(c1,':',v1)
+    if type(complaints)==list:
+        for i in complaints:
+            if type(i)==dict:
+                st.header(f"complaint no {cnt}:")
+                cnt=cnt+1
+                for k2,v2 in i.items():
+                    st.write(k2,":",v2)
+    else:
+        try:
+            for i,(c,v) in enumerate(complaints.items()):
+                st.header(f'complaint no {i+1}:')
+                for i,(c1,v1) in enumerate(v.items()): # for i, (k, v) in enumerate(mydict.items()):
+                    # st.write(v1)
+                    # s=str(i)+" complaint"
+                    # st.header(f"complaint no {cnt}:- ")
+                    st.write(c1,':',v1)
+        except TypeError:
+            st.warning("TypeError: Dictionary settings of your data.")
+                    
             
-        
     
     
     
+    # for c,v in complaints.items():
+    #     # st.write(v)
+    #     for i,(c1,v1) in enumerate(v.items()): # for i, (k, v) in enumerate(mydict.items()):
+    #         # st.write(v1)
+    #         # s=str(i)+" complaint"
+    #         st.header(f"complaint no {cnt}:- ")
+    #         cnt=int(cnt)+1
+            
+            
+    #         for i,(c2,v2) in enumerate(v1.items()):
+    #         # for c2,v2 in v1.items():
+    #             st.write(c2,'=',v2)
+    #     # for k,v in c.items():
+    #     #     st.write(k)
+    # # st.write(data)
+
 
 
