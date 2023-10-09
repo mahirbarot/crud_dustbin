@@ -7,9 +7,9 @@ import time
 cred = credentials.Certificate(r"serviceAccount.json")
 
 # Initialize the Firebase app
-# firebase_admin.initialize_app(cred, {
-#     'databaseURL': 'https://smartdustbin-nuv-default-rtdb.firebaseio.com/'
-# })
+firebase_admin.initialize_app(cred, {
+    'databaseURL': 'https://smartdustbin-nuv-default-rtdb.firebaseio.com/'
+})
 
 st.set_page_config(
         page_title="mini project",
